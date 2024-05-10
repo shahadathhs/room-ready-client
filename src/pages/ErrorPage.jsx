@@ -13,8 +13,8 @@ const ErrorPage = () => {
         <div className="flex flex-col md:flex-row gap-5 justify-center items-center min-h-screen">
           {/* left */}
           <div className="text-center lg:text-left text-3xl p-4">
-              <Lottie  animationData={Error_404} loop={true} />
-            </div>
+            <Lottie  animationData={Error_404} loop={true} />
+          </div>
           {/* right */}
           <section className="flex items-center h-full sm:p-16 dark:bg-gray-900 dark:text-gray-100">
             <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8 space-y-8 text-center sm:max-w-md">
