@@ -116,7 +116,7 @@ const NavBar = () => {
           <div tabIndex={0} role="button" className="btn btn-outline btn-sm shadow-md text-lg">
             <FaHamburger />
           </div>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-3 shadow bg-base-100 rounded-box w-40 space-y-3">
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50 p-3 shadow bg-base-100 rounded-box w-40 space-y-3">
             {navLinks}
           </ul>
         </div>
