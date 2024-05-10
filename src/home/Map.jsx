@@ -41,18 +41,18 @@ const Map = () => {
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 items-center gap-5 p-6'>
       
-      <div data-aos="zoom-in-up" className="hero col-span-1 md:col-span-2">
+      <div data-aos="flip-up" className="hero col-span-1 md:col-span-2">
           <h1 className="text-2xl md:text-4xl font-bold z-20 text-black text-center">Find Us on the Map</h1>
           <Lottie  animationData={map} loop={true} className='h-[300px] md:h-[400px] rotate-90' />
       </div>
       
-      <div data-aos="fade-right">
+      <div data-aos="flip-right">
         <p className="py-6 max-w-md text-center md:text-right mx-auto">
           Locate our hotel in the heart of Chattogram, Bangladesh, with our interactive map. Situated amidst the city s vibrant culture and bustling attractions, our hotel offers a prime location for both business and leisure travelers. Use our map to explore nearby landmarks, dining options, and points of interest, ensuring you make the most of your stay. Whether you are arriving from near or far, our convenient location makes it easy to access all that Chattogram has to offer. Start planning your journey with us today.
         </p>
       </div>
 
-      <div data-aos="fade-left">
+      <div data-aos="flip-left">
         <MapContainer
           className="h-[500px] rounded-3xl" 
           center={location_coordinate} zoom={13} scrollWheelZoom={false}
