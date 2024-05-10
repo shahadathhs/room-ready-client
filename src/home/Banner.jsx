@@ -21,6 +21,10 @@ import 'swiper/css/pagination';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
+// aos import
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Banner = () => {
   const rooms = [
@@ -86,9 +90,16 @@ const Banner = () => {
     }
   ];
 
+  useEffect(() => {
+    AOS.init({
+      disable: "phone",
+      duration: 700,
+      easing: "ease-out-cubic",
+    });
+  }, []);
 
   return (
-    <div className='p-2'>
+    <div data-aos="zoom-in-up" className='p-2'>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import useAuth from './../hooks/useAuth';
 import { RxAvatar } from "react-icons/rx";
 
-
 const NavBar = () => {
   // authentication
   const { user, logOut } = useAuth();
