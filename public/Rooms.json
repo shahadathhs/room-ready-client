@@ -1,0 +1,110 @@
+[
+  {
+    "roomName": "Deluxe Room",
+    "roomDescription": "Indulge in comfort and style in our Deluxe Room, featuring modern amenities and elegant decor.",
+    "pricePerNight": 120,
+    "roomSize": "300 sqft",
+    "availability": "Yes",
+    "roomImages": "https://i.ibb.co/znyGGfw/room1.jpg",
+    "specialOffers": "Stay 3 nights, get 1 night free"
+  },
+  {
+    "roomName": "Executive Suite",
+    "roomDescription": "Experience luxury living in our Executive Suite, complete with stunning city views and premium amenities.",
+    "pricePerNight": 250,
+    "roomSize": "500 sqft",
+    "availability": "Yes",
+    "roomImages": "https://i.ibb.co/5B5vvWd/room2.jpg",
+    "specialOffers": "Complimentary breakfast included"
+  },
+  {
+    "roomName": "Family Suite",
+    "roomDescription": "Enjoy spacious accommodations for the whole family in our Family Suite, with separate bedrooms and a cozy living area.",
+    "pricePerNight": 200,
+    "roomSize": "600 sqft",
+    "availability": "Yes",
+    "roomImages": "https://i.ibb.co/4p3nRsS/room3.jpg",
+    "specialOffers": "Kids stay free"
+  },
+  {
+    "roomName": "Ocean View Room",
+    "roomDescription": "Wake up to stunning ocean views in our Ocean View Room, featuring a private balcony and soothing coastal decor.",
+    "pricePerNight": 180,
+    "roomSize": "400 sqft",
+    "availability": "Yes",
+    "roomImages": "https://i.ibb.co/rpkMRc2/room4.webp",
+    "specialOffers": ""
+  },
+  {
+    "roomName": "Junior Suite",
+    "roomDescription": "Experience modern elegance in our Junior Suite, with stylish furnishings and upscale amenities.",
+    "pricePerNight": 150,
+    "roomSize": "350 sqft",
+    "availability": "Yes",
+    "roomImages": "https://i.ibb.co/HqLx8G2/room5.jpg",
+    "specialOffers": ""
+  },
+  {
+    "roomName": "Classic Room",
+    "roomDescription": "Experience timeless comfort in our Classic Room, featuring traditional decor and all the modern conveniences.",
+    "pricePerNight": 100,
+    "roomSize": "250 sqft",
+    "availability": "Yes",
+    "roomImages": "https://i.ibb.co/FDkV4sK/room6.jpg",
+    "specialOffers": ""
+  },
+  {
+    "roomName": "Luxury Suite",
+    "roomDescription": "Indulge in luxury and sophistication in our spacious Luxury Suite, with opulent furnishings and breathtaking views.",
+    "pricePerNight": 300,
+    "roomSize": "700 sqft",
+    "availability": "Yes",
+    "roomImages": "https://i.ibb.co/YXqcS0d/room7.webp",
+    "specialOffers": "Exclusive access to the club lounge"
+  },
+  {
+    "roomName": "Penthouse Suite",
+    "roomDescription": "Experience the height of luxury in our Penthouse Suite, with expansive living space and panoramic views of the city.",
+    "pricePerNight": 500,
+    "roomSize": "1000 sqft",
+    "availability": "Yes",
+    "roomImages": "https://i.ibb.co/hLb42CN/room8.jpg",
+    "specialOffers": "Complimentary airport transfer"
+  },
+  {
+    "roomName": "Garden View Room",
+    "roomDescription": "Relax amidst lush greenery in our Garden View Room, with a private patio overlooking the hotel's beautifully landscaped gardens.",
+    "pricePerNight": 170,
+    "roomSize": "450 sqft",
+    "availability": "Yes",
+    "roomImages": "https://i.ibb.co/xCk2h2P/room9.jpg",
+    "specialOffers": ""
+  },
+  {
+    "roomName": "Honeymoon Suite",
+    "roomDescription": "Celebrate your love in our romantic Honeymoon Suite, featuring a luxurious king-size bed and a private Jacuzzi.",
+    "pricePerNight": 400,
+    "roomSize": "800 sqft",
+    "availability": "Yes",
+    "roomImages": "https://i.ibb.co/2yzszGQ/room10.jpg",
+    "specialOffers": "Champagne and strawberries upon arrival"
+  },
+  {
+    "roomName": "Business Class Room",
+    "roomDescription": "Stay productive and relaxed in our Business Class Room, featuring a spacious work desk and ergonomic chair.",
+    "pricePerNight": 130,
+    "roomSize": "320 sqft",
+    "availability": "Yes",
+    "roomImages": "https://i.ibb.co/v3LRMdV/room11.jpg",
+    "specialOffers": "Complimentary Wi-Fi and breakfast"
+  },
+  {
+    "roomName": "Presidential Suite",
+    "roomDescription": "Experience the ultimate in luxury and refinement in our Presidential Suite, with unparalleled amenities and personalized service.",
+    "pricePerNight": 1000,
+    "roomSize": "1500 sqft",
+    "availability": "Yes",
+    "roomImages": "https://i.ibb.co/0ZxYZwr/room12.jpg",
+    "specialOffers": "24-hour butler service"
+  }
+]
