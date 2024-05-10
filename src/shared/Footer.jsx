@@ -64,7 +64,7 @@ const Footer = () => {
             className="mb-4 text-center flex gap-2 flex-col md:flex-row font-normal md:mb-0"
           >
               &copy; {currentYear}
-              <Link className="text-blue-600" to="/">Farmer-Motion.</Link>
+              <Link className="text-blue-600" to="/">RoomReady.</Link>
               All Rights Reserved.
           </Typography>
           <div className="flex gap-4 text-indigo-600 sm:justify-center">

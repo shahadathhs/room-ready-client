@@ -1,18 +1,18 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
-const Home = () => {
+const Rooms = () => {
   return (
     <HelmetProvider>
       <div>
         <Helmet>
-          <title>Home | RoomReady</title>
+          <title>Rooms | RoomReady</title>
         </Helmet>
         <div>
-          This is Home
+          This is Rooms
         </div>
       </div>
     </HelmetProvider>
   );
 };
 
-export default Home;
+export default Rooms;

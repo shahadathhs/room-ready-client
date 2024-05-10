@@ -54,29 +54,57 @@ const NavBar = () => {
           }
           to="/">Home</NavLink>
         </motion.li>
+        
         <motion.li
         whileHover={{ scale:1.1 }}
         >
           <NavLink 
           className={({ isActive }) => isActive 
           ? 
-          'text-indigo-600 font-semibold border-b-2 border-blue-600' 
+          'btn btn-sm border-0 btn-outline text-indigo-600 font-semibold border-b-2 border-blue-600' 
           : 
           undefined
           }
-          to="/about">About</NavLink>
+          to="/rooms">Rooms</NavLink>
         </motion.li>
+
         <motion.li
         whileHover={{ scale:1.1 }}
         >
           <NavLink 
           className={({ isActive }) => isActive 
           ? 
-          'text-indigo-600 font-semibold border-b-2 border-blue-600' 
+          'btn btn-sm border-0 btn-outline text-indigo-600 font-semibold border-b-2 border-blue-600' 
           : 
           undefined
           }
-          to="/blog">Blog</NavLink>
+          to="/myBookings">My Bookings</NavLink>
+        </motion.li>
+
+        <motion.li
+        whileHover={{ scale:1.1 }}
+        >
+          <NavLink 
+          className={({ isActive }) => isActive 
+          ? 
+          'btn btn-sm border-0 btn-outline text-indigo-600 font-semibold border-b-2 border-blue-600' 
+          : 
+          undefined
+          }
+          to="/aboutUs">About Us</NavLink>
+        </motion.li>
+
+        <motion.li
+        whileHover={{ scale:1.1 }}
+        >
+          <NavLink 
+          className={({ isActive }) => isActive 
+          ? 
+          'btn btn-sm border-0 btn-outline text-indigo-600 font-semibold border-b-2 border-blue-600' 
+          : 
+          undefined
+          }
+          to="/contactUs">Contact Us</NavLink>
         </motion.li>
 		</>
 
@@ -88,7 +116,7 @@ const NavBar = () => {
           <div tabIndex={0} role="button" className="btn btn-outline btn-sm shadow-md text-lg">
             <FaHamburger />
           </div>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-3 shadow bg-base-100 rounded-box w-28 space-y-3">
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-3 shadow bg-base-100 rounded-box w-40 space-y-3">
             {navLinks}
           </ul>
         </div>
