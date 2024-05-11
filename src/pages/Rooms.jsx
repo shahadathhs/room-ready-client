@@ -1,10 +1,44 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import banner from "../assets/banner.jpg";
+import { useEffect, useState } from "react";
 
 const Rooms = () => {
-  const rooms = useLoaderData();
-  console.log(rooms);
+  const [rooms, setRooms] = useState([]);
+
+  const fetchRooms = (minPrice, maxPrice) => {
+    let url = `${import.meta.env.VITE_API_URL}/rooms`;
+    if (minPrice && maxPrice) {
+      url += `?minPrice=${minPrice}&maxPrice=${maxPrice}`;
+    } else if (minPrice) {
+      url += `?minPrice=${minPrice}`;
+    } else if (maxPrice) {
+      url += `?maxPrice=${maxPrice}`;
+    }
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setRooms(data))
+      .catch(error => console.error('Error fetching rooms:', error));
+  };
+
+  const handleRoomsFilter = filter => {
+    if (filter === 'all') {
+      fetchRooms();
+    } else if (filter === '<=150') {
+      fetchRooms(null, 150);
+    } else if (filter === '151-250') {
+      fetchRooms(151, 250);
+    } else if (filter === '<=250') {
+      fetchRooms(null, 250);
+    } else if (filter === '>250') {
+      fetchRooms(251);
+    }
+  };
+
+  useEffect(() => {
+    fetchRooms();
+  }, []);
 
   return (
     <HelmetProvider>
@@ -15,12 +49,28 @@ const Rooms = () => {
         <div className="p-2">
           {/* banner */}
           <div className="hero my-3">
-            <img src={banner} className="w-full h-[400px] object-cover rounded-xl" alt="" />
+            <img src={banner} className="h-full w-full sm:h-[400px] object-cover rounded-xl" alt="" />
             <div className="hero-overlay bg-opacity-60 rounded-xl"></div>
             <div className="hero-content text-center text-white">
               <div className="max-w-md">
                 <h1 className="text-3xl pb-6">Welcome to Our Room Collection</h1>
-                <p className="text-lg">Explore our collection of luxurious rooms and suites, meticulously designed to provide unparalleled comfort and style. Whether you are seeking a tranquil escape or a vibrant city stay, our hotel offers a range of accommodations to suit every travelers needs. From spacious suites with stunning views to cozy rooms with modern amenities, find your ideal retreat with us. Start planning your unforgettable stay today.</p>
+                <p className="text-lg">Explore our collection of luxurious rooms and suites, meticulously designed to
+                 provide unparalleled comfort and style. Whether you are seeking a tranquil escape or a vibrant city 
+                 stay, our hotel offers a range of accommodations to suit every travelers needs. From spacious suites
+                  with stunning views to cozy rooms with modern amenities, find your ideal retreat with us. Start 
+                  planning your unforgettable stay today.
+                </p>
+                {/* filter dropdown */}
+                <div className="dropdown mt-4">
+                  <div tabIndex={0} role="button" className="btn m-1 text-blue-600 border-2 btn-outline">Filter Rooms by Price</div>
+                  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 space-y-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a className="btn btn-sm btn-outline" onClick={() => handleRoomsFilter('all')}>All</a></li>
+                    <li><a className="btn btn-sm btn-outline" onClick={() => handleRoomsFilter('<=150')}>Less or equal to 150</a></li>
+                    <li><a className="btn btn-sm btn-outline" onClick={() => handleRoomsFilter('151-250')}>151 to 250</a></li>
+                    <li><a className="btn btn-sm btn-outline" onClick={() => handleRoomsFilter('<=250')}>Less or equal to 250</a></li>
+                    <li><a className="btn btn-sm btn-outline" onClick={() => handleRoomsFilter('>250')}>More than 250 BDT</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
