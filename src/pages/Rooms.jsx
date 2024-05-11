@@ -18,7 +18,11 @@ const Rooms = () => {
 
     fetch(url)
       .then(res => res.json())
-      .then(data => setRooms(data))
+      .then((data) => {
+        // Filter out rooms with availability set to "No"
+        const filteredRooms = data.filter(room => room.availability === 'Yes');
+        setRooms(filteredRooms);
+      })
       .catch(error => console.error('Error fetching rooms:', error));
   };
 

@@ -10,6 +10,7 @@ import {
 import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
 import auth from '../firebase/firebase.config';
+import axios from 'axios';
 
 export const AuthContext = createContext(null);
 
@@ -55,9 +56,27 @@ const AuthProvider = ({children}) => {
   // observer
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      //console.log(currentUser?.email)
+      console.log(currentUser?.email)
       setUser(currentUser);
       setLoading(false);
+
+      // if user exist then issue a token
+      const userEmail = { email: currentUser?.email || user?.email }
+      if (currentUser) {
+        axios.post(`${import.meta.env.VITE_API_URL}/jwt`, userEmail, {
+          withCredentials: true
+        })
+          .then(res => {
+            console.log(res.data)
+          })
+      }else{
+        axios.post(`${import.meta.env.VITE_API_URL}/logout`, userEmail, {
+          withCredentials: true
+        })
+          .then(res => {
+            console.log(res.data)
+          })
+      }
     });
     return () => {
       unSubscribe();
