@@ -5,8 +5,13 @@
     "pricePerNight": 120,
     "roomSize": "300 sqft",
     "availability": "Yes",
-    "roomImages": "https://i.ibb.co/znyGGfw/room1.jpg",
-    "specialOffers": "Stay 3 nights, get 1 night free"
+    "roomImages": [
+      "https://i.ibb.co/znyGGfw/room1.jpg" , 
+      "https://i.ibb.co/5B5vvWd/room2.jpg" ,
+      "https://i.ibb.co/4p3nRsS/room3.jpg"
+    ],
+    "specialOffers": "Stay 3 nights, get 1 night free",
+    "reviewCount": 0
   },
   {
     "roomName": "Executive Suite",
@@ -14,8 +19,13 @@
     "pricePerNight": 250,
     "roomSize": "500 sqft",
     "availability": "Yes",
-    "roomImages": "https://i.ibb.co/5B5vvWd/room2.jpg",
-    "specialOffers": "Complimentary breakfast included"
+    "roomImages": [
+      "https://i.ibb.co/rpkMRc2/room4.webp" , 
+      "https://i.ibb.co/HqLx8G2/room5.jpg" ,
+      "https://i.ibb.co/FDkV4sK/room6.jpg"
+    ],
+    "specialOffers": "Complimentary breakfast included",
+    "reviewCount": 0
   },
   {
     "roomName": "Family Suite",
@@ -23,8 +33,13 @@
     "pricePerNight": 200,
     "roomSize": "600 sqft",
     "availability": "Yes",
-    "roomImages": "https://i.ibb.co/4p3nRsS/room3.jpg",
-    "specialOffers": "Kids stay free"
+    "roomImages": [
+      "https://i.ibb.co/YXqcS0d/room7.webp" , 
+      "https://i.ibb.co/hLb42CN/room8.jpg" ,
+      "https://i.ibb.co/xCk2h2P/room9.jpg"
+    ],
+    "specialOffers": "Kids stay free",
+    "reviewCount": 0
   },
   {
     "roomName": "Ocean View Room",
@@ -32,8 +47,13 @@
     "pricePerNight": 180,
     "roomSize": "400 sqft",
     "availability": "Yes",
-    "roomImages": "https://i.ibb.co/rpkMRc2/room4.webp",
-    "specialOffers": ""
+    "roomImages": [
+      "https://i.ibb.co/2yzszGQ/room10.jpg" , 
+      "https://i.ibb.co/v3LRMdV/room11.jpg" ,
+      "https://i.ibb.co/0ZxYZwr/room12.jpg"
+    ],
+    "specialOffers": "",
+    "reviewCount": 0
   },
   {
     "roomName": "Junior Suite",
@@ -41,8 +61,13 @@
     "pricePerNight": 150,
     "roomSize": "350 sqft",
     "availability": "Yes",
-    "roomImages": "https://i.ibb.co/HqLx8G2/room5.jpg",
-    "specialOffers": ""
+    "roomImages": [
+      "https://i.ibb.co/K0dMHmP/room13.jpg" , 
+      "https://i.ibb.co/n3C66GC/room14.jpg" ,
+      "https://i.ibb.co/s5ZtF2F/room15.webp"
+    ],
+    "specialOffers": "",
+    "reviewCount": 0
   },
   {
     "roomName": "Classic Room",
@@ -50,8 +75,13 @@
     "pricePerNight": 100,
     "roomSize": "250 sqft",
     "availability": "Yes",
-    "roomImages": "https://i.ibb.co/FDkV4sK/room6.jpg",
-    "specialOffers": ""
+    "roomImages": [
+      "https://i.ibb.co/ZdB0wyj/room16.jpg" , 
+      "https://i.ibb.co/kh4hQ36/room17.jpg" ,
+      "https://i.ibb.co/vmhghgD/room18.jpg"
+    ],
+    "specialOffers": "",
+    "reviewCount": 0
   },
   {
     "roomName": "Luxury Suite",
@@ -59,8 +89,13 @@
     "pricePerNight": 300,
     "roomSize": "700 sqft",
     "availability": "Yes",
-    "roomImages": "https://i.ibb.co/YXqcS0d/room7.webp",
-    "specialOffers": "Exclusive access to the club lounge"
+    "roomImages": [
+      "https://i.ibb.co/cbkpX9N/room19.jpg" , 
+      "https://i.ibb.co/9NHZ4R2/room20.jpg" ,
+      "https://i.ibb.co/TB2F3xH/room21.jpg"
+    ],
+    "specialOffers": "Exclusive access to the club lounge",
+    "reviewCount": 0
   },
   {
     "roomName": "Penthouse Suite",
@@ -68,8 +103,13 @@
     "pricePerNight": 500,
     "roomSize": "1000 sqft",
     "availability": "Yes",
-    "roomImages": "https://i.ibb.co/hLb42CN/room8.jpg",
-    "specialOffers": "Complimentary airport transfer"
+    "roomImages": [
+      "https://i.ibb.co/YW5mKH4/room22.jpg" , 
+      "https://i.ibb.co/Ptby66c/room23.jpg" ,
+      "https://i.ibb.co/99RGZv5/room24.jpg"
+    ],
+    "specialOffers": "Complimentary airport transfer",
+    "reviewCount": 0
   },
   {
     "roomName": "Garden View Room",
@@ -77,8 +117,13 @@
     "pricePerNight": 170,
     "roomSize": "450 sqft",
     "availability": "Yes",
-    "roomImages": "https://i.ibb.co/xCk2h2P/room9.jpg",
-    "specialOffers": ""
+    "roomImages": [
+      "https://i.ibb.co/FDkV4sK/room6.jpg" , 
+      "https://i.ibb.co/5B5vvWd/room2.jpg" ,
+      "https://i.ibb.co/hLb42CN/room8.jpg"
+    ],
+    "specialOffers": "",
+    "reviewCount": 0
   },
   {
     "roomName": "Honeymoon Suite",
@@ -86,8 +131,13 @@
     "pricePerNight": 400,
     "roomSize": "800 sqft",
     "availability": "Yes",
-    "roomImages": "https://i.ibb.co/2yzszGQ/room10.jpg",
-    "specialOffers": "Champagne and strawberries upon arrival"
+    "roomImages": [
+      "https://i.ibb.co/YW5mKH4/room22.jpg" , 
+      "https://i.ibb.co/9NHZ4R2/room20.jpg" ,
+      "https://i.ibb.co/ZdB0wyj/room16.jpg"
+    ],
+    "specialOffers": "Champagne and strawberries upon arrival",
+    "reviewCount": 0
   },
   {
     "roomName": "Business Class Room",
@@ -95,8 +145,13 @@
     "pricePerNight": 130,
     "roomSize": "320 sqft",
     "availability": "Yes",
-    "roomImages": "https://i.ibb.co/v3LRMdV/room11.jpg",
-    "specialOffers": "Complimentary Wi-Fi and breakfast"
+    "roomImages": [
+      "https://i.ibb.co/znyGGfw/room1.jpg" , 
+      "https://i.ibb.co/HqLx8G2/room5.jpg" ,
+      "https://i.ibb.co/xCk2h2P/room9.jpg"
+    ],
+    "specialOffers": "Complimentary Wi-Fi and breakfast",
+    "reviewCount": 0
   },
   {
     "roomName": "Presidential Suite",
@@ -104,7 +159,12 @@
     "pricePerNight": 1000,
     "roomSize": "1500 sqft",
     "availability": "Yes",
-    "roomImages": "https://i.ibb.co/0ZxYZwr/room12.jpg",
-    "specialOffers": "24-hour butler service"
+    "roomImages": [
+      "https://i.ibb.co/K0dMHmP/room13.jpg" , 
+      "https://i.ibb.co/v3LRMdV/room11.jpg" ,
+      "https://i.ibb.co/kh4hQ36/room17.jpg"
+    ],
+    "specialOffers": "24-hour butler service",
+    "reviewCount": 0
   }
 ]

@@ -9,6 +9,7 @@ import ContactUs from "../pages/ContactUs.jsx";
 import Rooms from "../pages/Rooms.jsx";
 import MyBookings from "../pages/MyBookings.jsx";
 import PrivateRoutes from './PrivateRoutes';
+import RoomsDetails from "../pages/RoomsDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/rooms",
-        element: <Rooms />
+        element: <Rooms />,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/rooms`)
+      },
+      {
+        path: "/roomsDetails/:id",
+        element: <PrivateRoutes><RoomsDetails /></PrivateRoutes>,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/rooms/${params.id}`)
       },
       {
         path: "/myBookings",
