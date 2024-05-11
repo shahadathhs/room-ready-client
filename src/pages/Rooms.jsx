@@ -81,7 +81,7 @@ const Rooms = () => {
               <div key={room._id} className="border-2 mx-auto rounded-lg shadow-lg max-w-md p-8 sm:flex sm:space-x-6 dark:bg-gray-900 dark:text-gray-100">
                 <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
                   <Link to={`/roomsDetails/${room._id}`}>
-                  <img src={room.roomImages[1]} alt="" className="object-cover object-center w-full h-full rounded dark:bg-gray-500" />
+                  <img src={room.roomImages[0]} alt="" className="object-cover object-center w-full h-full rounded dark:bg-gray-500" />
                   </Link>
                 </div>
                 <div className="flex flex-col space-y-4">
