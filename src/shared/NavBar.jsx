@@ -149,7 +149,7 @@ const NavBar = () => {
                 </div>
               </div>
               {/* dropdown */}
-              <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 space-y-2 rounded-box">
+              <ul tabIndex={0} className="dropdown-content z-50 menu p-2 shadow bg-base-100 space-y-2 rounded-box">
                 {/* profile */}
                 <div className="flex flex-col justify-center max-w-[220px] shadow-md rounded-xl p-6 dark:bg-gray-900 dark:text-gray-100">
                   {

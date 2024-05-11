@@ -30,7 +30,7 @@ const Booking = () => {
     const schedule = startDate;
     const message = form.message.value;
 
-    const Booking = {name, phone, email, roomName, pricePerNight, roomImage, schedule, message}
+    const Booking = { name, phone, email, roomName, pricePerNight, roomImage, schedule, message}
 
     console.table(Booking)
 
@@ -132,12 +132,12 @@ const Booking = () => {
               {/* Price Per Night */}
               <label className="input input-bordered flex items-center gap-2" >
                 Price Per Night:
-                <input type="number" className="glow" name="servicePrice"  placeholder={room.pricePerNight} disabled />
+                <input type="number" className="glow w-full" name="servicePrice"  placeholder={room.pricePerNight} disabled />
               </label>
               {/* photo */}
               <label className="input input-bordered flex items-center gap-2" >
                 Photo:
-                <input type="text" className="glow" name="photo"  placeholder={room.roomImages[0]} disabled />
+                <input type="text" className="glow w-full" name="photo"  placeholder={room.roomImages[0]} disabled />
               </label>
               {/* Number */}
               <label className="input input-bordered flex items-center gap-2" >
