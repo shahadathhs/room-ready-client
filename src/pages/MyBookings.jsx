@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import cartList from "../assets/lottie/list.json"
 import Lottie from "lottie-react";
 import { FaRegHandPointRight } from "react-icons/fa";
-import { MdDeleteForever } from "react-icons/md";
+import { MdDeleteForever, MdRateReview, MdOutlineUpdate } from "react-icons/md";
 
 const MyBookings = () => {
   const { user } = useAuth();
@@ -33,7 +33,7 @@ const MyBookings = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, Cancel it!"
     })
     .then((result) => {
       if (result.isConfirmed) {
@@ -45,10 +45,10 @@ const MyBookings = () => {
             console.log('delete Booking', data);
             /* Print a message that indicates whether the operation deleted a document */
             if (data.deletedCount === 1) {
-              console.log("Successfully deleted one booking.");
+              console.log("Successfully Canceled one booking.");
               Swal.fire({
-                title: "Deleted!",
-                text: "Booking has been deleted.",
+                title: "Canceled!",
+                text: "Booking has been canceled.",
                 icon: "success"
               });
               fetch(`${import.meta.env.VITE_API_URL}/rooms/${previousID}`, {
@@ -65,7 +65,7 @@ const MyBookings = () => {
               const remaining = bookings.filter(booking => booking._id !== bookingID)
               setBookings(remaining)
             } else {
-              console.log("No Booking matched the query. Deleted 0 Booking.");
+              console.log("No Booking matched the query. Canceled 0 Booking.");
             }
           })
           .catch(error => console.log(error))
@@ -103,33 +103,34 @@ const MyBookings = () => {
                         <div className="flex justify-between w-full pb-2 space-x-2">
                           <div className="space-y-1">
                             <h3 className="text-lg font-semibold leading-snug sm:pr-8">{booking.roomName}</h3>
-                            <p className="text-sm dark:text-gray-400">{booking.schedule}</p>
+                            <p className="text-sm dark:text-gray-400">Schedule: {booking.schedule.slice(0,10)}</p>
                           </div>
                           <div className="text-right">
-                            <p className="text-lg font-semibold">{booking.pricePerNight}</p>
+                            <p className="text-lg font-semibold">Price:{booking.pricePerNight}</p>
                             <p className="text-sm line-through dark:text-gray-600">
                               {parseFloat(booking.pricePerNight)+ parseFloat(booking.pricePerNight/5)}
                             </p>
                           </div>
                         </div>
-                        <div className="flex items-center text-sm divide-x">
-                          {/* delete button */}
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 items-center text-sm ">
+                          {/* Cancel button */}
                           <button onClick={() => handleBookingDelete( booking._id , booking.previousID)} 
-                            type="button" className="flex items-center px-2 py-1 pl-0 space-x-1">
+                            type="button" className="flex items-center space-x-1 mx-auto btn btn-outline text-blue-600">
                             <div className="text-xl"><MdDeleteForever /></div>
-                            <span>Remove</span>
+                            <span>Cancel</span>
                           </button>
+                          {/* Cancel button */}
+                          <Link to={`/bookingUpdate/${booking._id}`} 
+                            type="button" className="flex items-center space-x-1 mx-auto btn btn-outline text-blue-600">
+                            <div className="text-xl"><MdOutlineUpdate /></div>
+                            <span>Update</span>
+                          </Link>
                           {/* review */}
-                          {
-                            // cart?.status === "Confirmed"
-                            // ?
-                            // <p className="text-indigo-600 px-2 py-1 space-x-1">Confirmed</p>
-                            // :
-                            // <button onClick={() => handleCartStatus(cart._id)} type="button" className="flex items-center px-2 py-1 space-x-1">
-                            //   <div className="text-xl"><MdPending /></div>
-                            //   <span>Pending</span>
-                            // </button>
-                          }
+                          <Link to={`/review/${booking.previousID}`} type="button" 
+                            className="flex items-center btn btn-outline text-blue-600 space-x-1 mx-auto col-span-2 md:col-span-1">
+                            <div className="text-xl"><MdRateReview /></div>
+                            <span>Review</span>
+                          </Link>
                         </div>
                       </div>
                     </div>

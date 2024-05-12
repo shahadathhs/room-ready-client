@@ -11,6 +11,8 @@ import MyBookings from "../pages/MyBookings.jsx";
 import PrivateRoutes from './PrivateRoutes';
 import RoomsDetails from "../pages/RoomsDetails.jsx";
 import Booking from "../pages/Booking.jsx";
+import Review from "../pages/Review.jsx";
+import BookingUpdate from "../pages/BookingUpdate.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,16 @@ const router = createBrowserRouter([
         path: "/roomsDetails/:id",
         element: <PrivateRoutes><RoomsDetails /></PrivateRoutes>,
         loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/rooms/${params.id}`)
+      },
+      {
+        path: "/review/:id",
+        element: <PrivateRoutes><Review /></PrivateRoutes>,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/rooms/${params.id}`)
+      },
+      {
+        path: "/bookingUpdate/:id",
+        element: <PrivateRoutes><BookingUpdate /></PrivateRoutes>,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/bookings/${params.id}`)
       },
       {
         path: "/myBookings",

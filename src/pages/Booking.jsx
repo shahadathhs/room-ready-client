@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import checkout from "../assets/lottie/checkout.json";
 import Lottie from "lottie-react";
@@ -13,6 +13,10 @@ const Booking = () => {
   const { user } = useAuth();
 
   const room = useLoaderData();
+
+  // navigation systems
+  const navigate = useNavigate();
+  const from = "/rooms";
 
   const [startDate, setStartDate] = useState()
 
@@ -68,6 +72,7 @@ const Booking = () => {
                 icon: 'success',
                 confirmButtonText: 'Cool'
               })
+              
               fetch(`${import.meta.env.VITE_API_URL}/rooms/${room._id}`, {
                 method: 'PATCH',
                 headers: {
@@ -79,6 +84,8 @@ const Booking = () => {
                 .then(data => {
                 console.log('Room availability Updated', data);
               })
+              
+              navigate(from);
             }
           })
         }
