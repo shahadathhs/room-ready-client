@@ -98,7 +98,7 @@ const Rooms = () => {
                       <span className="dark:text-gray-400">Available: {room.availability}</span>
                     </span>
                     <span className="flex items-center space-x-2">
-                      <span className="dark:text-gray-400">Total Reviews: {room.reviewCount}</span>
+                      <span className="dark:text-gray-400">Total Reviews: {room.reviews.length}</span>
                     </span>
                   </div>
                 </div>

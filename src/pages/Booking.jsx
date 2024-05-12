@@ -16,7 +16,7 @@ const Booking = () => {
 
   // navigation systems
   const navigate = useNavigate();
-  const from = "/rooms";
+  const to = "/rooms";
 
   const [startDate, setStartDate] = useState()
 
@@ -66,13 +66,6 @@ const Booking = () => {
           .then(data => {
             console.log(data)
             if(data.insertedId){
-              Swal.fire({
-                title: 'Successful!',
-                text: 'Booking Successful Added',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-              })
-              
               fetch(`${import.meta.env.VITE_API_URL}/rooms/${room._id}`, {
                 method: 'PATCH',
                 headers: {
@@ -83,9 +76,14 @@ const Booking = () => {
                 .then(res => res.json())
                 .then(data => {
                 console.log('Room availability Updated', data);
+                Swal.fire({
+                  title: 'Successful!',
+                  text: 'Booking Successful Added',
+                  icon: 'success',
+                  confirmButtonText: 'Cool'
+                })
               })
-              
-              navigate(from);
+              navigate(to);
             }
           })
         }

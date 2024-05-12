@@ -76,7 +76,7 @@ const RoomsDetails = () => {
                         </div>
                       </div>
                       <div className="ml-4">
-                        <h4 className="text-lg font-medium leading-6 dark:text-gray-50">Total Review: {room.reviewCount}</h4>
+                        <h4 className="text-lg font-medium leading-6 dark:text-gray-50">Total Review: {room.reviews.length}</h4>
                       </div>
                     </div>
 
