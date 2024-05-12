@@ -123,7 +123,7 @@ const Banner = () => {
                 src={room.image} 
                 />
                 <div className="hero-content bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] rounded-lg flex flex-col">
-                  <h2 className="sm:text-xl">{room.name} </h2>
+                  <h2 className="sm:text-xl text-white">{room.name} </h2>
                   <p className="max-w-md text-center font-bold sm:text-lg text-white  mx-4 rounded-xl">
                   {room.description}
                   </p>

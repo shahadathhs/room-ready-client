@@ -25,53 +25,66 @@ const MyBookings = () => {
 
   }, [url, axiosSecure])
 
-  const handleBookingDelete = ( bookingID, previousID) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Cancel it!"
-    })
-    .then((result) => {
-      if (result.isConfirmed) {
-        fetch(`${import.meta.env.VITE_API_URL}/bookings/${bookingID}`, {
-          method: 'DELETE'
-        })
-          .then(res => res.json())
-          .then(data => {
-            console.log('delete Booking', data);
-            /* Print a message that indicates whether the operation deleted a document */
-            if (data.deletedCount === 1) {
-              console.log("Successfully Canceled one booking.");
-              Swal.fire({
-                title: "Canceled!",
-                text: "Booking has been canceled.",
-                icon: "success"
-              });
-              fetch(`${import.meta.env.VITE_API_URL}/rooms/${previousID}`, {
-                method: 'PATCH',
-                headers: {
-                  'content-type': 'application/json'
-                },
-                body: JSON.stringify({availability: "Yes"})
-              })
-                .then(res => res.json())
-                .then(data => {
-                console.log('Room availability Updated', data);
-              })
-              const remaining = bookings.filter(booking => booking._id !== bookingID)
-              setBookings(remaining)
-            } else {
-              console.log("No Booking matched the query. Canceled 0 Booking.");
-            }
+  
+  const handleBookingDelete = ( bookingID, previousID, scheduledDate) => {
+    const today = new Date();
+    const scheduled = new Date(scheduledDate);
+    // Check if it's at least one day before the scheduled date
+    if (scheduled.getTime() - today.getTime() > 24 * 60 * 60 * 1000) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Cancel it!"
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          fetch(`${import.meta.env.VITE_API_URL}/bookings/${bookingID}`, {
+            method: 'DELETE'
           })
-          .catch(error => console.log(error))
-      }
-    })
+            .then(res => res.json())
+            .then(data => {
+              console.log('delete Booking', data);
+              /* Print a message that indicates whether the operation deleted a document */
+              if (data.deletedCount === 1) {
+                console.log("Successfully Canceled one booking.");
+                Swal.fire({
+                  title: "Canceled!",
+                  text: "Booking has been canceled.",
+                  icon: "success"
+                });
+                fetch(`${import.meta.env.VITE_API_URL}/rooms/${previousID}`, {
+                  method: 'PATCH',
+                  headers: {
+                    'content-type': 'application/json'
+                  },
+                  body: JSON.stringify({availability: "Yes"})
+                })
+                  .then(res => res.json())
+                  .then(data => {
+                  console.log('Room availability Updated', data);
+                })
+                const remaining = bookings.filter(booking => booking._id !== bookingID)
+                setBookings(remaining)
+              } else {
+                console.log("No Booking matched the query. Canceled 0 Booking.");
+              }
+            })
+            .catch(error => console.log(error))
+        }
+      })
+    } else {
+      Swal.fire({
+        title: "Cancellation not allowed",
+        text: "You cannot cancel this booking as it's less than one day away from the scheduled date.",
+        icon: "error"
+      });
+    }
   }
+
 
   return (
     <HelmetProvider>
@@ -114,7 +127,7 @@ const MyBookings = () => {
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 items-center text-sm ">
                           {/* Cancel button */}
-                          <button onClick={() => handleBookingDelete( booking._id , booking.previousID)} 
+                          <button onClick={() => handleBookingDelete( booking._id , booking.previousID, booking.schedule)} 
                             type="button" className="flex items-center space-x-1 mx-auto btn btn-outline text-blue-600">
                             <div className="text-xl"><MdDeleteForever /></div>
                             <span>Cancel</span>
