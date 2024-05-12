@@ -21,6 +21,7 @@ const Booking = () => {
 
     const form = event.target;
 
+    const previousID = room._id;
     const name = user.displayName;
     const phone = form.phone.value;
     const email = user.email;
@@ -30,7 +31,7 @@ const Booking = () => {
     const schedule = startDate;
     const message = form.message.value;
 
-    const Booking = { name, phone, email, roomName, pricePerNight, roomImage, schedule, message}
+    const Booking = { previousID, name, phone, email, roomName, pricePerNight, roomImage, schedule, message}
 
     console.table(Booking)
 
@@ -39,9 +40,9 @@ const Booking = () => {
         text: `Prize Per Night: ${Booking.pricePerNight}`,
         icon: "info",
         html: `
-          Booking Date: ${Booking.schedule} <br>
-          User Name: ${Booking.name} <br>
-          User Phon: ${Booking.phone}
+          Booking Date: ${Booking.schedule} <br> <br>
+          User Name: ${Booking.name} <br> <br>
+          User Phone: ${Booking.phone}
         `,
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -110,7 +111,7 @@ const Booking = () => {
             </div>
           </div>
           {/* form */}
-          <div className="text-center space-y-3 p-4">
+          <div className="text-center space-y-3 p-4 overflow-hidden">
             <p className="text-2xl text-indigo-600">Booking Form</p>
             <form onSubmit={handleBookingConfirm}
             className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
@@ -132,7 +133,7 @@ const Booking = () => {
               {/* Price Per Night */}
               <label className="input input-bordered flex items-center gap-2" >
                 Price Per Night:
-                <input type="number" className="glow w-full" name="servicePrice"  placeholder={room.pricePerNight} disabled />
+                <input type="number" className="glow " name="servicePrice"  placeholder={room.pricePerNight} disabled />
               </label>
               {/* photo */}
               <label className="input input-bordered flex items-center gap-2" >

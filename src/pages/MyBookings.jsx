@@ -9,7 +9,6 @@ import Lottie from "lottie-react";
 import { FaRegHandPointRight } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 
-
 const MyBookings = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -26,7 +25,7 @@ const MyBookings = () => {
 
   }, [url, axiosSecure])
 
-  const handleBookingDelete = id => {
+  const handleBookingDelete = ( bookingID, previousID) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -38,7 +37,7 @@ const MyBookings = () => {
     })
     .then((result) => {
       if (result.isConfirmed) {
-        fetch(`${import.meta.env.VITE_API_URL}/bookings/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/bookings/${bookingID}`, {
           method: 'DELETE'
         })
           .then(res => res.json())
@@ -52,7 +51,18 @@ const MyBookings = () => {
                 text: "Booking has been deleted.",
                 icon: "success"
               });
-              const remaining = bookings.filter(craft => craft._id !== id)
+              fetch(`${import.meta.env.VITE_API_URL}/rooms/${previousID}`, {
+                method: 'PATCH',
+                headers: {
+                  'content-type': 'application/json'
+                },
+                body: JSON.stringify({availability: "Yes"})
+              })
+                .then(res => res.json())
+                .then(data => {
+                console.log('Room availability Updated', data);
+              })
+              const remaining = bookings.filter(booking => booking._id !== bookingID)
               setBookings(remaining)
             } else {
               console.log("No Booking matched the query. Deleted 0 Booking.");
@@ -74,7 +84,7 @@ const MyBookings = () => {
           <div className="text-center text-2xl mx-auto p-4 flex flex-col md:flex-row justify-center items-center gap-16">
             <Lottie className="h-[400px]" animationData={cartList} loop={true} />
             <div className="text-center">
-              <Link to="/services" className="dark:text-gray-100 btn btn-outline">
+              <Link to="/rooms" className="dark:text-gray-100 btn btn-outline">
                 Add More<FaRegHandPointRight />
               </Link>
             </div>
@@ -104,11 +114,12 @@ const MyBookings = () => {
                         </div>
                         <div className="flex items-center text-sm divide-x">
                           {/* delete button */}
-                          <button onClick={()=> handleBookingDelete(booking._id)} type="button" className="flex items-center px-2 py-1 pl-0 space-x-1">
+                          <button onClick={() => handleBookingDelete( booking._id , booking.previousID)} 
+                            type="button" className="flex items-center px-2 py-1 pl-0 space-x-1">
                             <div className="text-xl"><MdDeleteForever /></div>
                             <span>Remove</span>
                           </button>
-                          {/* status */}
+                          {/* review */}
                           {
                             // cart?.status === "Confirmed"
                             // ?
