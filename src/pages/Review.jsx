@@ -21,24 +21,50 @@ const Review = () => {
     const userEmail = user.email;
     const userPhoto = user.photoURL;
     const roomName = reviewRoom.roomName;
-    const rating = form.rating.value;
-    if (rating<1 || rating>5) {
+    const rating = parseInt(form.rating.value); // Convert rating to integer
+    const review = form.review.value;
+    const timestamp = new Date().toISOString(); // Convert timestamp to ISO string
+
+    if (rating < 1 || rating > 5) {
       Swal.fire({
         title: 'Unsuccessful!',
         text: 'Invalid Rating',
         icon: "error",
-      })
-    }else{
-      console.log(rating)
+      });
+      return; // Exit function if rating is invalid
     }
-    const timestamp = new Date();
-    const review = form.review.value;
 
-    const reviewForm = {userName, userEmail, userPhoto, roomName, timestamp, rating, review}
-    console.table(reviewForm);
+    const reviewData = { userName, userEmail, userPhoto, roomName, timestamp, rating, review };
+    console.table(reviewData);
 
-    form.reset();
-    navigate(to)
+    fetch(`${import.meta.env.VITE_API_URL}/rooms/${reviewRoom._id}/add-review`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reviewData),
+    })
+      .then(res => res.json())
+      .then(data => {
+      console.log('Review Successful Added', data);
+        Swal.fire({
+          title: 'Successful!',
+          text: 'Review Successful Added',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+      })
+      // Reset form and navigate to another page
+      form.reset();
+      navigate(to);
+      })
+      .catch(error => {
+        console.error("Error adding review:", error);
+        Swal.fire({
+          title: 'Error!',
+          text: 'Failed to add review',
+          icon: "error",
+        });
+      });
   }
 
   return (

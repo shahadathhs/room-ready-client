@@ -23,6 +23,7 @@ const Rooms = () => {
         const filteredRooms = data.filter(room => room.availability === 'Yes');
         setRooms(filteredRooms);
       })
+      //.then((data) => setRooms(data))
       .catch(error => console.error('Error fetching rooms:', error));
   };
 
