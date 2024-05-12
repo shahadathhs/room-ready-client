@@ -37,6 +37,8 @@ const Review = () => {
     const reviewData = { userName, userEmail, userPhoto, roomName, timestamp, rating, review };
     console.table(reviewData);
 
+
+    // adding review to room database
     fetch(`${import.meta.env.VITE_API_URL}/rooms/${reviewRoom._id}/add-review`, {
       method: "PUT",
       headers: {
@@ -53,9 +55,6 @@ const Review = () => {
           icon: 'success',
           confirmButtonText: 'Cool'
       })
-      // Reset form and navigate to another page
-      form.reset();
-      navigate(to);
       })
       .catch(error => {
         console.error("Error adding review:", error);
@@ -65,6 +64,26 @@ const Review = () => {
           icon: "error",
         });
       });
+    
+    // adding review to separate database
+    fetch(`${import.meta.env.VITE_API_URL}/reviews`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reviewData),
+    })
+    .then(res => res.json())
+      .then(data => {
+      console.log('Review Successful Added in review database', data);
+      })
+      .catch(error => {
+        console.error("Error adding review in review database", error);
+      });
+
+    // Reset form and navigate to another page
+    form.reset();
+    navigate(to);
   }
 
   return (

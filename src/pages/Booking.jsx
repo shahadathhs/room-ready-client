@@ -18,7 +18,7 @@ const Booking = () => {
   const navigate = useNavigate();
   const to = "/rooms";
 
-  const [startDate, setStartDate] = useState()
+  const [startDate, setStartDate] = useState(new Date())
 
   const handleBookingConfirm = event => {
     event.preventDefault();
