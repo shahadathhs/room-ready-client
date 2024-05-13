@@ -1,6 +1,39 @@
+import Swal from "sweetalert2";
 import hotel from "../assets/hotel.jpg"
 
 const NewsLetter = () => {
+  const handleNewsletter = event => {
+    event.preventDefault();
+    
+    const form = event.target;
+    
+    const email = form.email.value;
+    console.log({email})
+
+    fetch(`${import.meta.env.VITE_API_URL}/newsletters`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({email}),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('Newsletter subscribe Successful', data);
+          Swal.fire({
+            title: 'Successful!',
+            text: 'Newsletter subscribe Successful',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+          })
+      })
+      .catch((error) => {
+        console.error("Error subscribing to newsletter:", error);
+      });
+    form.reset();
+
+  }
+
   return (
     <div className="hero">
       <img src={hotel} className="w-full h-[600px] md:h-[400px] rounded-3xl object-cover" alt="" />
@@ -23,10 +56,12 @@ const NewsLetter = () => {
         data-aos-easing="ease-out-cubic"
         data-aos-duration="2000"
         className="text-center md:text-left space-y-4">
-          <div className="join">
-            <input className="input input-bordered join-item w-[200px]" placeholder="Email"/>
-            <button className="btn btn-outline text-blue-600 join-item rounded-r-full">Subscribe</button>
-          </div>
+          {/* from */}
+          <form onSubmit={handleNewsletter}
+          className="join">
+            <input type="email" name="email" className="input input-bordered join-item w-[200px]" placeholder="Email"/>
+            <button type="submit" className="btn btn-outline text-blue-600 join-item rounded-r-full">Subscribe</button>
+          </form>
           <div className="space-y-4">
             <button className="inline-flex items-center px-6 py-3 rounded-lg bg-blue-600 text-gray-50">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="fill-current w-7 h-7 text-gray-50">

@@ -51,7 +51,7 @@ const Home = () => {
           },
         }}
       >
-        <div className="relative">
+        <div className="relative z-50">
           <button
             onClick={handleCloseModal}
             className="absolute top-2 right-2 text-white text-xl bg-black bg-opacity-50 rounded-full p-2"
