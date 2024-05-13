@@ -2,8 +2,44 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import Lottie from "lottie-react";
 import contactUs1 from "../assets/lottie/contactUs1.json";
 import contactUs2 from "../assets/lottie/contactUs2.json"
+import Swal from "sweetalert2";
 
 const ContactUs = () => {
+  const handleContactUs = event => {
+    event.preventDefault();
+    
+    const form = event.target;
+
+    const name = form.name.value;
+    const email = form.email.value;
+    const message = form.message.value;
+
+    const contactData = { name, email, message}
+    console.log(contactData)
+
+    fetch(`${import.meta.env.VITE_API_URL}/contactUs`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(contactData),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('Message sent Successful', data);
+          Swal.fire({
+            title: 'Successful!',
+            text: 'Message sent Successful',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+          })
+      })
+      .catch((error) => {
+        console.error("Error sending message:", error);
+      });
+    form.reset();
+  }
+
   return (
     <HelmetProvider>
       <div>
@@ -66,12 +102,13 @@ const ContactUs = () => {
                 </p>
               </div>
               {/* right */}
-              <form className="space-y-8 p-4 border-[1px] max-w-[500px] rounded-md shadow-md" >
+              <form onSubmit={handleContactUs}
+              className="space-y-8 p-4 border-[1px] max-w-[500px] rounded-md shadow-md" >
                 <div className="space-y-4">
                   {/* name */}
                   <div className="space-y-2">
                     <label htmlFor="name" className="block text-sm">Name</label>
-                    <input type="text" name="name" id="name" placeholder="leroy@jenkins.com" required
+                    <input type="text" name="name" id="name" placeholder="Your name" required
                     className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 
                     dark:text-gray-100 focus:dark:border-blue-400" />
                   </div>
@@ -82,7 +119,7 @@ const ContactUs = () => {
                     className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 
                     dark:text-gray-100 focus:dark:border-blue-400" />
                   </div>
-                  {/* email */}
+                  {/* message */}
                   <div className="space-y-2">
                     <label htmlFor="message" className="block text-sm">Message</label>
                     <textarea type="text" name="message" id="message" placeholder="Your Message" required
