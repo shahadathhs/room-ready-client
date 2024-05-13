@@ -4,7 +4,7 @@ import Footer from "../shared/Footer.jsx";
 
 const MainLayout = () => {
   return (
-    <div className="container mx-auto space-y-4">
+    <div className="container mx-auto space-y-4 overflow-hidden">
       <NavBar></NavBar>
       <Outlet></Outlet>
       <Footer></Footer>
