@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 
 const ReviewSlide = () => {
   const [reviews, setReviews] = useState([]);
-  console.log(reviews)
+  //console.log(reviews)
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/reviews`)

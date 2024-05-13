@@ -7,6 +7,7 @@ import Modal from "react-modal";
 import { useState } from "react";
 import featuredImage from "../assets/images/slider/room10.jpg"
 import { Link } from "react-router-dom";
+import HomeRooms from "./HomeRooms";
 
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -24,6 +25,7 @@ const Home = () => {
         <div className="py-6 space-y-3">
           <Banner></Banner>
           <Map></Map>
+          <HomeRooms></HomeRooms>
           <NewsLetter></NewsLetter>
           <ReviewSlide></ReviewSlide>
         </div>
