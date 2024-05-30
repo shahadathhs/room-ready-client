@@ -8,6 +8,7 @@ import cartList from "../assets/lottie/list.json"
 import Lottie from "lottie-react";
 import { FaRegHandPointRight } from "react-icons/fa";
 import { MdDeleteForever, MdRateReview, MdOutlineUpdate } from "react-icons/md";
+import { RiSecurePaymentLine } from "react-icons/ri";
 
 const MyBookings = () => {
   const { user } = useAuth();
@@ -25,6 +26,12 @@ const MyBookings = () => {
 
   }, [url, axiosSecure])
 
+  const total = bookings.reduce((total, booking) => {
+    // Parse total and cart.price only if they are valid integers in string format
+    let parsedTotal = isNaN(parseFloat(total)) ? 0 : parseFloat(total);
+    let parsedPrice = isNaN(parseFloat(booking.pricePerNight)) ? 0 : parseFloat(booking.pricePerNight);
+    return parsedTotal + parsedPrice;
+  }, 0)
   
   const handleBookingDelete = ( bookingID, previousID, scheduledDate) => {
     const today = new Date();
@@ -84,7 +91,6 @@ const MyBookings = () => {
       });
     }
   }
-
 
   return (
     <HelmetProvider>
@@ -151,18 +157,29 @@ const MyBookings = () => {
                 )
               }
             </ul>
-            <div className="space-y-1 text-right">
+            <div className="space-y-3 text-right">
               <p>Total amount:
                 <span className="font-semibold">
-                {bookings.reduce((total, booking) => {
+                {/* {bookings.reduce((total, booking) => {
                     // Parse total and cart.price only if they are valid integers in string format
                     let parsedTotal = isNaN(parseFloat(total)) ? 0 : parseFloat(total);
                     let parsedPrice = isNaN(parseFloat(booking.pricePerNight)) ? 0 : parseFloat(booking.pricePerNight);
                     return parsedTotal + parsedPrice;
-                }, 0)}
+                }, 0)} */}
+                {total}
                 </span>
               </p>
               <p className="text-sm dark:text-gray-400">Not including taxes and shipping costs</p>
+              {
+                bookings.length
+                ?
+                <Link to="/payment"
+                className="btn btn-outline btn-sm text-blue-600">
+                  <RiSecurePaymentLine />Pay Now
+                </Link>
+                :
+                <button className="btn btn-outline" disabled>Pay</button>
+              }
             </div>
           </div>
         </div>

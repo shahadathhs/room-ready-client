@@ -90,6 +90,19 @@ const NavBar = () => {
           : 
           undefined
           }
+          to="/paymentHistory">All Payments</NavLink>
+        </motion.li>
+
+        <motion.li
+        whileHover={{ scale:1.1 }}
+        >
+          <NavLink 
+          className={({ isActive }) => isActive 
+          ? 
+          'btn btn-sm border-0 btn-outline text-indigo-600 font-semibold border-b-2 border-blue-600' 
+          : 
+          undefined
+          }
           to="/aboutUs">About Us</NavLink>
         </motion.li>
 

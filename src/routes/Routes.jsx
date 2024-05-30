@@ -13,6 +13,8 @@ import RoomsDetails from "../pages/RoomsDetails.jsx";
 import Booking from "../pages/Booking.jsx";
 import Review from "../pages/Review.jsx";
 import BookingUpdate from "../pages/BookingUpdate.jsx";
+import Payment from "../pages/Payment.jsx";
+import PaymentHistory from "../pages/PaymentHistory.jsx";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +65,14 @@ const router = createBrowserRouter([
       {
         path: "/myBookings",
         element: <PrivateRoutes><MyBookings /></PrivateRoutes>
+      },
+      {
+        path: "/payment",
+        element: <PrivateRoutes><Payment /></PrivateRoutes>
+      },
+      {
+        path: "/paymentHistory",
+        element: <PrivateRoutes><PaymentHistory /></PrivateRoutes>
       },
       {
         path: "/booking/:id",
