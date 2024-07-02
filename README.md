@@ -1,23 +1,18 @@
 # RoomReady | Seamless Hotel Booking Experience
 
-## Live Site URL
-
-### Client Side
-
-- [RoomReady - Web App](https://eleventh-a-roomready.web.app)
+- Live Site URL: [RoomReady](https://eleventh-a-roomready.web.app)
 
 
-## Tools & Technology
-
-- HTML
-- CSS
-- Tailwind CSS
-- JavaScript
-- React.js
-- React Router
-- Firebase Authentication
-- Firebase Hosting
-- Vercel (Server Deployment)
+-- Tools & Technology
+  - HTML
+  - CSS
+  - Tailwind CSS
+  - JavaScript
+  - React.js
+  - React Router
+  - Firebase Authentication
+  - Firebase Hosting
+  - Vercel (Server Deployment)
 
 ## How to run locally
 
@@ -38,7 +33,7 @@
 2. **Navigate to the project directory**
 
    ```bash
-   cd roomready-client
+   cd room-ready-client
    ```
 
 3. **Install dependencies**
@@ -72,7 +67,7 @@
 
 ### Running the Backend Locally
 
-1. **Visit server repository:** [Server Repository on GitHub](https://github.com/your-username/room-ready-server)
+1. **Visit server repository:** [Server Repository on GitHub](https://github.com/shahadathhs/room-ready-client)
 
 
 
