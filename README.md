@@ -2,8 +2,7 @@
 
 - Live Site URL: [RoomReady](https://eleventh-a-roomready.web.app)
 
-
--- Tools & Technology
+- Tools & Technology
   - HTML
   - CSS
   - Tailwind CSS
