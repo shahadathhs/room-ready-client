@@ -67,7 +67,7 @@
 
 ### Running the Backend Locally
 
-1. **Visit server repository:** [Server Repository on GitHub](https://github.com/shahadathhs/room-ready-client)
+- **Visit server repository:** [Server Repository on GitHub](https://github.com/shahadathhs/room-ready-server)
 
 
 
