@@ -2,6 +2,7 @@
 
 - Live Site URL: [RoomReady](https://eleventh-a-roomready.web.app)
 
+
 - Tools & Technology
   - HTML
   - CSS
@@ -26,7 +27,7 @@
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/room-ready-client.git
+   git clone https://github.com/shahadathhs/room-ready-client.git
    ```
 
 2. **Navigate to the project directory**
