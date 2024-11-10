@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import registerLottie from "../assets/lottie/register.json"
 import Lottie from "lottie-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -11,6 +11,8 @@ const Register = () => {
   const { createUser, updateUserProfile, logOut } = useAuth();
   const [passwordError,setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [userEmail, setUserEmail] = useState(null);
+  const [userUid, setUserUid] = useState(null);
 
   // navigation systems
   const navigate = useNavigate();
@@ -48,6 +50,9 @@ const Register = () => {
     createUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        setUserEmail(user.email); 
+        setUserUid(user.uid);
+        console.log("Sign up UID: ",userUid);
         console.log(user);
         logOut();
         Swal.fire({
@@ -74,6 +79,18 @@ const Register = () => {
         })
       });
   }
+
+  useEffect(() => {
+    if (userEmail && userUid) {
+      // Insert tracking script
+      const script = document.createElement("script");
+      script.innerHTML = `
+        !function(e,t,a,n,s,c){e.gaf||((n=e.gaf=function(){n.process?n.process.apply(n,arguments):n.queue.push(arguments)}).queue=[],n.t=+new Date,(s=t.createElement(a)).async=1,s.src="https://d1c9wriao5k55q.cloudfront.net/assets/gaf.js?t="+864e5*Math.ceil(new Date/864e5),(c=t.getElementsByTagName(a)[0]).parentNode.insertBefore(s,c))}(window,document,"script"),gaf("init","80ef5fb5-cc09-4396-b4be-69e123b3f580"),gaf("event","pageload");
+        gaf("event", "signup", { email: "${userEmail}", uid: "${userUid}" });
+      `;
+      document.body.appendChild(script);
+    }
+  }, [userEmail, userUid]);
 
   return (
     <HelmetProvider>

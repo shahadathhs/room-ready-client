@@ -21,13 +21,22 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
-        console.log(result.user)
+        console.log(result.user);
+        const userEmail = result.user.email;
+        const userUid = result.user.uid; // Extracting UID
+
+        if (userEmail) {
+          // Tracking script with UID and Email
+          window.gaf('event', 'signup', { email: userEmail, uid: userUid });
+        }
+
         Swal.fire({
           title: 'Successful!',
           text: 'You Login Successful',
           icon: 'success',
-          confirmButtonText: 'Cool'
-        })
+          confirmButtonText: 'Cool',
+        });
+
         if (result.user) {
           navigate(from);
         }
@@ -35,20 +44,19 @@ const Login = () => {
       .catch((error) => {
         Swal.fire({
           title: 'Error!',
-          text: 'Login UnsuccessFul!',
+          text: 'Login Unsuccessful!',
           icon: 'error',
-          confirmButtonText: 'Try Again'
-        })
+          confirmButtonText: 'Try Again',
+        });
         console.log(error);
-      })
+      });
   };
 
   // handle email login
-  const handleEmailLogin = event => {
+  const handleEmailLogin = (event) => {
     event.preventDefault();
     
     const form = event.target;
-    
     const email = form.email.value;
     const password = form.password.value;
     
@@ -56,26 +64,34 @@ const Login = () => {
 
     login(email, password)
       .then((result) => {
-        console.log(result.user)
+        console.log(result.user);
+        const userEmail = result.user.email;
+        const userUid = result.user.uid; 
+        console.log("Login UID", userUid);
+
+        // Tracking script with UID and Email
+        window.gaf('event', 'signup', { email: userEmail, uid: userUid });
+
         Swal.fire({
           title: 'Successful!',
           text: 'You Login Successful',
           icon: 'success',
-          confirmButtonText: 'Cool'
-        })
+          confirmButtonText: 'Cool',
+        });
+
         if (result.user) {
           navigate(from);
         } 
       })
-      .catch((error)=> {
+      .catch((error) => {
         Swal.fire({
           title: 'Error!',
           text: 'Password or Email did not match!',
           icon: 'error',
-          confirmButtonText: 'Try Again'
-        })
+          confirmButtonText: 'Try Again',
+        });
         setLoginError(error.message);
-      })
+      });
   };
 
   return (

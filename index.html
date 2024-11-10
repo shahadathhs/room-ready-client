@@ -4,29 +4,31 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/svgexport-8.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script>
-      !(function (e, t, a, n, s, c) {
-        e.gaf ||
-          (((n = e.gaf =
-            function () {
-              n.process
-                ? n.process.apply(n, arguments)
-                : n.queue.push(arguments);
-            }).queue = []),
-          (n.t = +new Date()),
-          ((s = t.createElement(a)).async = 1),
-          (s.src =
-            "https://d1c9wriao5k55q.cloudfront.net/assets/gaf.js?t=" +
-            864e5 * Math.ceil(new Date() / 864e5)),
-          (c = t.getElementsByTagName(a)[0]).parentNode.insertBefore(s, c));
-      })(window, document, "script"),
-        gaf("init", "fac25d70-4c78-4730-8a8b-3fa83ae4cc93"),
-        gaf("event", "pageload");
-    </script>
     <title>RoomReady</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Delay the tracking script until the page has fully loaded -->
+    <script>
+      window.onload = function () {
+        !(function (e, t, a, n, s, c) {
+          e.gaf ||
+            (((n = e.gaf =
+              function () {
+                n.process ? n.process.apply(n, arguments) : n.queue.push(arguments);
+              }).queue = []),
+            (n.t = +new Date()),
+            ((s = t.createElement(a)).async = 1),
+            (s.src =
+              "https://d1c9wriao5k55q.cloudfront.net/assets/gaf.js?t=" +
+              864e5 * Math.ceil(new Date() / 864e5)),
+            (c = t.getElementsByTagName(a)[0]).parentNode.insertBefore(s, c));
+        })(window, document, "script");
+        gaf("init", "80ef5fb5-cc09-4396-b4be-69e123b3f580");
+        gaf("event", "pageload");
+      };
+    </script>
   </body>
 </html>
