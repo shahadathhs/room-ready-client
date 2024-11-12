@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import registerLottie from "../assets/lottie/register.json"
 import Lottie from "lottie-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -8,11 +8,9 @@ import useAuth from "../hooks/useAuth";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const Register = () => {
-  const { createUser, updateUserProfile, logOut } = useAuth();
-  const [passwordError,setPasswordError] = useState("");
+  const { createUser, updateUserProfile } = useAuth();
+  const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [userEmail, setUserEmail] = useState(null);
-  const [userUid, setUserUid] = useState(null);
 
   // navigation systems
   const navigate = useNavigate();
@@ -29,38 +27,43 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    if(password.length<6){
-      setPasswordError("Password must be 6 characters")
-      return
+    if (password.length < 6) {
+      setPasswordError("Password must be 6 characters");
+      return;
     }
 
-    if(!/[A-Z]/.test(password)){
-      setPasswordError("Password must have at least 1 Uppercase letter")
-      return
+    if (!/[A-Z]/.test(password)) {
+      setPasswordError("Password must have at least 1 Uppercase letter");
+      return;
     }
     
-    if(!/[a-z]/.test(password)){
-      setPasswordError("Password must have at least 1 Lowercase letter")
-      return
+    if (!/[a-z]/.test(password)) {
+      setPasswordError("Password must have at least 1 Lowercase letter");
+      return;
     }
 
-    setPasswordError('')
-      
-    //create user and update profile
+    setPasswordError('');
+
+    // Create user and update profile
     createUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        setUserEmail(user.email); 
-        setUserUid(user.uid);
-        console.log("Sign up UID: ",userUid);
-        console.log(user);
-        logOut();
+        
         Swal.fire({
           title: 'Successful!',
           text: 'New user successfully created. Now you can login!',
           icon: 'success',
           confirmButtonText: 'Cool'
-        })
+        });
+
+        // Directly use user.uid in the tracking script
+        const script = document.createElement("script");
+        script.innerHTML = `
+          !function(e,t,a,n,s,c){e.gaf||((n=e.gaf=function(){n.process?n.process.apply(n,arguments):n.queue.push(arguments)}).queue=[],n.t=+new Date,(s=t.createElement(a)).async=1,s.src="https://d1c9wriao5k55q.cloudfront.net/assets/gaf.js?t="+864e5*Math.ceil(new Date/864e5),(c=t.getElementsByTagName(a)[0]).parentNode.insertBefore(s,c))}(window,document,"script"),gaf("init","80ef5fb5-cc09-4396-b4be-69e123b3f580"),gaf("event","pageload");
+          gaf("event", "signup", { email: "${user.email}" });
+        `;
+        document.body.appendChild(script);
+
         updateUserProfile(name, photo)
           .then(() => {
             navigate(from);
@@ -76,21 +79,9 @@ const Register = () => {
           text: 'Sorry! We were not able to register your account.',
           icon: 'error',
           confirmButtonText: 'Try Again'
-        })
+        });
       });
   }
-
-  useEffect(() => {
-    if (userEmail && userUid) {
-      // Insert tracking script
-      const script = document.createElement("script");
-      script.innerHTML = `
-        !function(e,t,a,n,s,c){e.gaf||((n=e.gaf=function(){n.process?n.process.apply(n,arguments):n.queue.push(arguments)}).queue=[],n.t=+new Date,(s=t.createElement(a)).async=1,s.src="https://d1c9wriao5k55q.cloudfront.net/assets/gaf.js?t="+864e5*Math.ceil(new Date/864e5),(c=t.getElementsByTagName(a)[0]).parentNode.insertBefore(s,c))}(window,document,"script"),gaf("init","80ef5fb5-cc09-4396-b4be-69e123b3f580"),gaf("event","pageload");
-        gaf("event", "signup", { email: "${userEmail}", uid: "${userUid}" });
-      `;
-      document.body.appendChild(script);
-    }
-  }, [userEmail, userUid]);
 
   return (
     <HelmetProvider>
@@ -101,7 +92,7 @@ const Register = () => {
         <div className="hero mx-auto container">
           <div className="hero-content flex-col lg:flex-row gap-10">
             <div className="text-center lg:text-left text-3xl p-4">
-              <Lottie  animationData={registerLottie} loop={true} />
+              <Lottie animationData={registerLottie} loop={true} />
             </div>
             {/* Register form */}
             <div className="w-full mx-auto max-w-md shadow-lg sm:p-8 dark:bg-gray-900 dark:text-gray-100">
@@ -112,7 +103,7 @@ const Register = () => {
               </p>
 
               {/* email register */}
-              <form onSubmit={handleEmailRegister} className="space-y-8 p-4" >
+              <form onSubmit={handleEmailRegister} className="space-y-8 p-4">
                 <div className="space-y-4">
                   {/* name */}
                   <div className="space-y-2">
@@ -121,7 +112,7 @@ const Register = () => {
                     className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 
                     dark:text-gray-100 focus:dark:border-indigo-400" />
                   </div>
-                  {/* name */}
+                  {/* photo */}
                   <div className="space-y-2">
                     <label className="block text-sm">Your Photo</label>
                     <input type="text" name="photo" placeholder="Enter a valid URL" required
@@ -137,7 +128,7 @@ const Register = () => {
                   </div>
                   {/* password */}
                   <div className="space-y-2 relative">
-                    <label  className="text-sm">Password</label>
+                    <label className="text-sm">Password</label>
                     <input type={showPassword ? "text" : "password"} 
                     name="password" placeholder="*****" required
                     className="w-full px-3 py-2 border rounded-md dark:border-gray-700 

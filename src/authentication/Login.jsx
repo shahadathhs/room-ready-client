@@ -64,13 +64,6 @@ const Login = () => {
 
     login(email, password)
       .then((result) => {
-        console.log(result.user);
-        const userEmail = result.user.email;
-        const userUid = result.user.uid; 
-        console.log("Login UID", userUid);
-
-        // Tracking script with UID and Email
-        window.gaf('event', 'signup', { email: userEmail, uid: userUid });
 
         Swal.fire({
           title: 'Successful!',
